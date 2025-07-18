@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Оформление подписки — Мета-Проводник</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; }
+    .checkbox { margin-bottom: 10px; }
+    .btn { background: #6c63ff; color: #fff; border: none; padding: 12px 24px; font-size: 18px; border-radius: 6px; cursor: pointer; }
+    .btn:disabled { background: #ccc; }
+    .info { font-size: 14px; color: #555; margin-bottom: 20px; }
+    label { font-size: 15px; }
+  </style>
+  <script>
+    function checkForm() {
+      const offer = document.getElementById('offer').checked;
+      const personal = document.getElementById('personal').checked;
+      const recurring = document.getElementById('recurring').checked;
+      document.getElementById('payBtn').disabled = !(offer && personal && recurring);
+    }
+  </script>
+</head>
+<body>
+  <h2>Оформление подписки</h2>
+  <div class="info">
+    <b>Подписка на доступ к платным медитациям</b><br>
+    Стоимость: <b>499 ₽/месяц</b><br>
+    Платёж будет списываться автоматически каждый месяц до отмены подписки.<br>
+    <br>
+    <b>Валюта:</b> Российский рубль (RUB)<br>
+    <b>Конвертация:</b> по курсу банка-эмитента на момент списания.<br>
+    <br>
+    <b>Отмена подписки:</b> в любой момент через Telegram-бота или по <a href="https://ваш-сайт.ру/unsubscribe">этой ссылке</a>.<br>
+    <b>Контакты:</b> support@ваш-сайт.ру
+  </div>
+  <form action="https://bank-pay-url" method="POST">
+    <!-- Здесь ваши скрытые поля для интеграции с банком -->
+    <div class="checkbox">
+      <input type="checkbox" id="offer" name="offer" onchange="checkForm()">
+      <label for="offer">Я ознакомился и принимаю <a href="https://ваш-сайт.ру/offer" target="_blank">условия оферты</a></label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="personal" name="personal" onchange="checkForm()">
+      <label for="personal">Я согласен с <a href="https://ваш-сайт.ру/privacy" target="_blank">политикой обработки персональных данных</a></label>
+    </div>
+    <div class="checkbox">
+      <input type="checkbox" id="recurring" name="recurring" onchange="checkForm()">
+      <label for="recurring">Я согласен на регулярные списания (рекуррентные платежи) — 499 ₽/месяц</label>
+    </div>
+    <button type="submit" class="btn" id="payBtn" disabled>Оплатить и оформить подписку</button>
+  </form>
+</body>
+</html>
