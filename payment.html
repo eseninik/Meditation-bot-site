@@ -33,7 +33,7 @@
     <b>Отмена подписки:</b> в любой момент через Telegram-бота.<br>
     <b>Контакты:</b> n_fedkova@mail.ru
   </div>
-  <form action="https://bank-pay-url" method="POST">
+  <form id="payForm" action="/get-payment-url" method="POST">
     <!-- Здесь ваши скрытые поля для интеграции с банком -->
     <div class="checkbox">
       <input type="checkbox" id="offer" name="offer" onchange="checkForm()">
@@ -45,7 +45,7 @@
     </div>
     <div class="checkbox">
       <input type="checkbox" id="recurring" name="recurring" onchange="checkForm()">
-      <label for="recurring">Я согласен на регулярные списания (рекуррентные платежи) — 499 ₽/месяц</label>
+      <label for="recurring">Я согласен на регулярные списания (рекуррентные платежи) — 490 ₽/месяц</label>
     </div>
     <button type="submit" class="btn" id="payBtn" disabled>Оплатить и оформить подписку</button>
   </form>
